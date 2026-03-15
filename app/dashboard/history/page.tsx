@@ -47,7 +47,8 @@ export default async function HistoryPage() {
         <div className="max-w-3xl space-y-3">
           {uploads.map((upload) => {
             // @ts-expect-error — Supabase join type
-            const analysis = upload.analyses?.[0];
+            const analysis = (upload as any).analyses?.[0];
+
             return (
               <Link
                 key={upload.id}
